@@ -4,7 +4,7 @@ RUN apk add --no-cache curl
 RUN curl -sSL $(curl -s https://api.github.com/repos/upx/upx/releases/latest \
     | grep browser_download_url | grep $TARGETARCH | cut -d '"' -f 4) -o /upx.tar.xz
 RUN tar -xf /upx.tar.xz \
-    && cd upx-*-$TARGETARCH_$TARGETOS \
+    && cd "upx-*-$TARGETARCH_$TARGETOS" \
     && mv upx /bin/upx
 
 FROM scratch
